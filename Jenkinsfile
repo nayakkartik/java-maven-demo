@@ -1,21 +1,21 @@
 pipeline {
 
- agent any
+    agent any
 
- stages {
+    stages {
 
-  stage('Checkout') {
-   steps {
-    git 'https://github.com/nayakkartik/java-maven-demo.git'
-   }
-  }
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/nayakkartik/java-maven-demo.git'
+            }
+        }
 
-  stage('Build') {
-   steps {
-    sh 'mvn clean package'
-   }
-  }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
 
- }
+    }
 
 }
