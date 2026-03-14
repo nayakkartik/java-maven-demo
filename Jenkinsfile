@@ -22,11 +22,12 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonar-server') {
+                withCredentials([string(credentialsId: 'SonarQube Token', variable: 'SONAR_TOKEN')]) {
                     sh '''
                     mvn sonar:sonar \
                     -Dsonar.projectKey=java-maven-demo \
-                    -Dsonar.login=$SONAR_AUTH_TOKEN
+                    -Dsonar.host.url=http://192.168.1.120:32000 \
+                    -Dsonar.login=$SONAR_TOKEN
                     '''
                 }
             }
