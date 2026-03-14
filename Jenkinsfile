@@ -26,12 +26,11 @@ pipeline {
                     sh '''
                     mvn sonar:sonar \
                     -Dsonar.projectKey=java-maven-demo \
-                    -Dsonar.host.url=http://192.168.1.120:32000
+                    -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
             }
         }
 
     }
-
 }
